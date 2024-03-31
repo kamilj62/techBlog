@@ -1,49 +1,57 @@
 [ {
     "comment_text": "No way!",
+    "date_created": "03/30/2024",
     "user_id": 2,
-    "post_id": 3
+    "blog_id": 3
     
 },
 {
     "comment_text": "First Comment :)",
+    "date_created": "03/30/2024",
     "user_id": 2,
-    "post_id": 5
+    "blog_id": 2
     
 },
 {
     "comment_text": "Is this believable?",
-    "user_id": 4,
-    "post_id": 1
+    "date_created": "03/30/2024",
+    "user_id": 3,
+    "blog_id": 1
     
 },
 {
    " comment_text": "Nice.",
+   "date_created": "03/30/2024",
     "user_id": 3,
-    "post_id": 5
+    "blog_id": 1
     
 },
 {
     "comment_text": "Groundbreaking stuff, going to follow this post closely.",
+    "date_created": "03/30/2024",
     "user_id": 3,
-    "post_id": 4
+    "blog_id": 2
     
 },
 {
     "comment_text": "As if!",
+    "date_created": "03/30/2024",
     "user_id": 2,
-    "post_id": 1
+    "blog_id": 1
     
 },
 {
     "comment_text": "Right, you're entitled to your own opinion.",
-    "user_id": 5,
-    "post_id": 3
+    "date_created": "03/30/2024",
+    "user_id": 1,
+    "blog_id": 3
     
 },
 {
     "comment_text": "Awesome, I'd like to know more.",
+    "date_created": "03/30/2024",
     "user_id": 2,
-    "post_id": 1
+    "blog_id": 1
     
 }
 ]
