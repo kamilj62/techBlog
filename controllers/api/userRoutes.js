@@ -1,13 +1,17 @@
 const router = require("express").Router();
-const { User, Comment } = require("../../models");
+const { User, Blog, Comment } = require("../../models");
+const { ensureAuthenticated } = require("../../utils/ensureAuthenticated");
 
-router.get("/", async (req, res) => {
+router.get("/", ensureAuthenticated, async (req, res) => {
   try {
     const categoryData = await Blog.findAll({});
 
     const blogs = categoryData.map((blog) => blog.get({ plain: true }));
 
-    res.render("dashboard", blogs);
+    res.render("dashboard", {
+      blogs,
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json(err);
   }

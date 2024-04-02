@@ -1,17 +1,6 @@
 const router = require("express").Router();
 const { Comment, Blog } = require("../../models");
 
-router.get("/", async (req, res) => {
-  try {
-    const categoryData = await Comment.findAll({
-      include: [Blog],
-    });
-    res.render("comment");
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 router.post("/", async (req, res) => {
   try {
     const newComment = await Comment.create({
