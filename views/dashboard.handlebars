@@ -34,10 +34,19 @@
     {{#each blogs as |blog|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/project/{{blog.id}}">{{blog.name}}</a></h4>
+        <h4><a href="/blog/{{blog.id}}">{{blog.name}}</a></h4>
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
+      <p>
+        <strong>{{blog.title}}</strong>
+      </p>
+      <p>
+        {{blog.blog}}
+      </p>
+      <div class="col-md-4 btn-delete">
+        <button class="btn btn-sm btn-danger" type="delete" data-id="{{blog.id}}">DELETE</button>
+      </div>
+      <div class="col-md-4 btn-comment">
+        <button class="btn btn-sm btn-secondary" type="submit" data-id="{{blog.id}}">COMMENT</button>
       </div>
     </div>
     {{/each}}
@@ -45,4 +54,5 @@
   {{/if}}
 </div>
 
-<script src="./js/profile.js"></script>
+<script src="./js/dashboard.js"></script>
+<script src="./js/comment.js"></script>

@@ -15,13 +15,15 @@
       <nav>
         <ul class="navbar">
               <li><a class="link" href="/">Home</a></li>
-               <li><a class="link" href="/dashboard">Dashboard</a></li>
-              {{#if loggedIn}}
-               <li><a class="link" href="/" id="logout">Logout</a></li>
-              {{else}}
-               <li><a class="link" href="/login">Login</a></li>
-              {{/if}}
-        </ul>
+              <li><a class="link" href="/dashboard">Dashboard</a></li>
+              <!-- Conditionally render login or logout links -->
+            {{#if logged_in}}
+            
+              <li><button class="btn btn-secondary" id="logout">logout</button></li>
+            {{else}}
+              <li><a href="/login">login</a></li>
+            {{/if}}
+            </ul>
       </nav>
 
 </header>

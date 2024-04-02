@@ -2,13 +2,23 @@ const express = require("express");
 const { Blog } = require("../../models");
 const router = express.Router();
 
+router.get("/", async (req, res) => {
+  try {
+    const categoryData = await Blog.findAll({
+      include: [Blog],
+    });
+    res.render("dashboard");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.post("/", async (req, res) => {
   try {
     const newProject = await Blog.create({
       ...req.body,
       user_id: req.session.user_id,
     });
-
     res.status(200).json(newProject);
   } catch (err) {
     res.status(400).json(err);
@@ -20,7 +30,7 @@ router.put("/:id", async (req, res) => {
     const category = await Blog.findByPk(req.params.id);
 
     if (!category) {
-      return res.status(404).json({ msg: "Category not found" });
+      return res.status(404).json({ msg: "Blog not found" });
     }
 
     // Update the category properties based on the request body
