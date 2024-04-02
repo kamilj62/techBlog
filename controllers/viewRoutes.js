@@ -19,6 +19,23 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/blog/:id", async (req, res) => {
+  try {
+    const category = await Blog.findByPk(req.params.id);
+    if (!category) {
+      return res.status(404).json({ msg: "Blog not found" });
+    }
+
+    const blogs = category.get({ plain: true });
+
+    res.render("blog", {
+      ...blogs,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -34,7 +51,7 @@ router.get("/profile", async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
-      include: [{ model: Project }],
+      include: [{ model: Blog }],
     });
 
     const user = userData.get({ plain: true });

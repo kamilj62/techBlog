@@ -15,6 +15,24 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const category = await Blog.findByPk(req.params.id);
+
+    if (!category) {
+      return res.status(404).json({ msg: "Category not found" });
+    }
+
+    // Update the category properties based on the request body
+    await category.update(req.body);
+
+    // Return the updated category
+    res.status(200).json(category);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.delete("/:id", async (req, res) => {
   try {
     const projectData = await Blog.destroy({
@@ -35,4 +53,4 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = Blog;
+module.exports = router;

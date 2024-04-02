@@ -1,5 +1,21 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User, Comment } = require("../../models");
+
+router.get("/:id", async (req, res) => {
+  // find one category by its `id` value
+  // be sure to include its associated Products
+  try {
+    const category = await Comment.findByPk(req.params.id, {
+      include: User,
+    });
+    if (!category) {
+      return res.status(404).json({ msg: "Comment not found" });
+    }
+    res.status(200).json(category);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post("/", async (req, res) => {
   try {
