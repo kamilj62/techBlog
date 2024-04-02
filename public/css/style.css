@@ -1,0 +1,11 @@
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin: 0;
+    font-size: 1.5em;
+  }
+
+  li {
+    padding: 25px;
+  }

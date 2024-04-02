@@ -10,22 +10,21 @@
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      
+  <div class="justify-space-around">
+    <header class="row">
       <nav>
-        <h1>
-        <a href="/">Home</a>
-      </h1>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
+        <ul class="navbar">
+              <li><a class="link" href="/">Home</a></li>
+               <li><a class="link" href="/dashboard">Dashboard</a></li>
+              {{#if loggedIn}}
+               <li><a class="link" href="/" id="logout">Logout</a></li>
+              {{else}}
+               <li><a class="link" href="/login">Login</a></li>
+              {{/if}}
+        </ul>
       </nav>
-    </header>
+
+</header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
