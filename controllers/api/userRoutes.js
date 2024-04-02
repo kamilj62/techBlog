@@ -1,6 +1,18 @@
 const router = require("express").Router();
 const { User, Comment } = require("../../models");
 
+router.get("/", async (req, res) => {
+  try {
+    const categoryData = await Blog.findAll({});
+
+    const blogs = categoryData.map((blog) => blog.get({ plain: true }));
+
+    res.render("dashboard", blogs);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/:id", async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
@@ -62,21 +74,6 @@ router.post("/login", async (req, res) => {
     res.status(400).json(err);
   }
 });
-
-// router.post("/blog", async (req, res) => {
-//   try {
-//     const userData = await User.create(req.body);
-
-//     req.session.save(() => {
-//       req.session.user_id = userData.id;
-//       req.session.logged_in = true;
-
-//       res.status(200).json(userData);
-//     });
-//   } catch (err) {
-//     res.status(400).json(err);
-//   }
-// });
 
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {

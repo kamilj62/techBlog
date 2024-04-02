@@ -2,17 +2,6 @@ const express = require("express");
 const { Blog } = require("../../models");
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  try {
-    const categoryData = await Blog.findAll({
-      include: [Blog],
-    });
-    res.render("dashboard");
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 router.post("/", async (req, res) => {
   try {
     const newProject = await Blog.create({
