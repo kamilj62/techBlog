@@ -6,16 +6,16 @@
 
     </h2>
     <p id="blog-name">
-      Title:
-      {{title}}
+      Title:{{title}}
     </p>
   </div>
   <div class="col-md-7">
     <p id="blog">
-      Blog:
-      {{blog}}
-      {{date_created}}
-      {{user_id}}
+      Blog: {{blog}}
+      <br>
+      date_created: {{date_created}}
+      <br>
+      user_id: {{user_id}}
     </p>
   </div>
 </div>
@@ -46,23 +46,18 @@
       </div>
     </form>
 {{#if owner}}
-  <form class="form update-form">
-      <div class="form-group">
-        <label for="update">Update Post Title:</label>
-        <textarea class="form-input" type="text" id="title" ></textarea>
-      </div>
+ <h2 class="card-header">Edit Post</h2>
+    <form class="card-body update-form">
+        <div class="form-row">
+        <label for="title" class="title">Title</label>
+        <input id="title" type="text" value="{{title}}" class="form-input form-control"/>
+        </div>
 
-      <div class="form-group">
-        <label for="update">Update Post Blog</label>
-        <textarea class="form-input" type="text" id="blog" ></textarea>
-      </div>
-      
-      <div class="form-group">
-        <button class="btn btn-secondary" id="btn-update" type="submit">
-          update
-        </button>
-      </div>
-      </div>
+        <div class="form-row">
+        <label for="update-blog" class="blog">Blog</label>
+        <input id="update-blog" type="text" value="{{blog}}" class="form-input form-control"/>
+        </div>
+        <button type="submit" id="btn-update" class="btn">Update</button>
     </form>
     
     

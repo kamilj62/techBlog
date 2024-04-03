@@ -17,11 +17,12 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", ensureAuthenticated, async (req, res) => {
+  console.log(req.body);
   try {
     const updatedBlog = await Blog.update(
       {
         title: req.body.title,
-        content: req.body.content,
+        blog: req.body.blog,
       },
       {
         where: {
@@ -30,11 +31,11 @@ router.put("/:id", ensureAuthenticated, async (req, res) => {
       }
     );
 
+    console.log("updatedBlog", updatedBlog);
+
     if (!updatedBlog) {
       return res.status(404).json({ message: "No blog with this id!" });
     }
-
-    console.log(updatedBlog);
 
     res.status(200).json({ message: "Updated blog" });
   } catch (err) {

@@ -25,12 +25,19 @@ const updateHandler = async (event) => {
   event.preventDefault();
 
   const title = document.querySelector("#title").value.trim();
-  const blog = document.querySelector("#blog").value.trim();
+  const blog = document.querySelector("#update-blog").value.trim();
 
-  // Send a PUT request to Upadate a blog
-  const response = await fetch("/api/blogs", {
+  const id = window.location.toString().split("/")[
+    window.location.toString().split("/").length - 1
+  ];
+
+  const response = await fetch(`/api/blogs/${id}`, {
     method: "PUT",
-    body: JSON.stringify({ comment_text, blog_id, date_created, user_id }),
+    body: JSON.stringify({
+      blog_id: id,
+      title,
+      blog,
+    }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -38,7 +45,7 @@ const updateHandler = async (event) => {
 
   // If the request is successful, redirect to the comment page
   if (response.ok) {
-    document.location.reload();
+    document.location.replace("/dashboard");
   } else {
     alert(response.statusText);
   }
@@ -48,4 +55,4 @@ document
   .querySelector(".comment-form")
   .addEventListener("submit", newCommentHandler);
 
-document.querySelector("#btn-update").addEventListener("submit", updateHandler);
+document.querySelector("#btn-update").addEventListener("click", updateHandler);
