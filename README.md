@@ -24,6 +24,8 @@ node run seed
 
 ## Usage
 
+![final techBlog](./public/Screenshot%202024-04-12%20at%201.20.41 AM.png)
+
 none
 
 ## license
